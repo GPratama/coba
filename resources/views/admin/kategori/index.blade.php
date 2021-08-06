@@ -11,7 +11,7 @@
       <div class="mb-3" align="right">
         <a href="{{route('kategori.create')}}" class="btn btn-primary">tambah</a>
       </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="table">
       <thead>
         <tr>
           <th scope="col">No</th>
@@ -41,3 +41,11 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script>
+  $(function() {
+      $("#table").DataTable();
+  })
+</script>
+@endpush

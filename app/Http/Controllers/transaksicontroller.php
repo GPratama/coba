@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kategori;
+use App\Models\transaksi;
 use Illuminate\Http\Request;
 
-class kategoricontroller extends Controller
+class transaksicontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class kategoricontroller extends Controller
      */
     public function index()
     {
-        $data = kategori::all();
+        $transaksi = transaksi::all();
 
-        return view('admin.kategori.index', compact('data'));
+        return view('admin.transaksi.index', compact('transaksi'));
     }
 
     /**
@@ -26,7 +26,7 @@ class kategoricontroller extends Controller
      */
     public function create()
     {
-        return view('admin.kategori.create');
+        //
     }
 
     /**
@@ -37,62 +37,53 @@ class kategoricontroller extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->validate([
-            'name'=>'required'
-        ]);
-        kategori::create($data);
-
-        return redirect()->route('kategori.index')->with('tambah berhasil');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\kategori  $kategori
+     * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function show(kategori $kategori)
+    public function show(transaksi $transaksi)
     {
-        //
+        $transaksi->detailtransaksi;
+        
+        return view('admin.transaksi.detail', compact('transaksi'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\kategori  $kategori
+     * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function edit(kategori $kategori)
+    public function edit(transaksi $transaksi)
     {
-        return view('admin.kategori.edit',compact('kategori'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\kategori  $kategori
+     * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kategori $kategori)
+    public function update(Request $request, transaksi $transaksi)
     {
-        $data=$request->validate([
-            'name'=>'required'
-        ]);
-        $kategori->update($data);
-
-        return redirect()->route('kategori.index')->with('edit berhasil');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\kategori  $kategori
+     * @param  \App\Models\transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kategori $kategori)
+    public function destroy(transaksi $transaksi)
     {
-        $kategori->delete();
-        return back()->with('status','berhasil di hapus');
+        //
     }
 }

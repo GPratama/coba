@@ -9,7 +9,7 @@
     <div class="my-3" align="right">
       <a href="{{route('produk.create')}}" class="btn btn-primary">tambah</a>
     </div>
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="table">
       <thead>
         <tr>
           <th scope="col">No</th>
@@ -27,7 +27,7 @@
                 <td><img src="{{asset($item->foto)}}" alt="" width="300"></td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->harga}}</td>
-                <td>{{$item->Kataegori}}</td>
+                <td>{{$item->kategori->name}}</td>
                 <td><a href="{{route('produk.edit', $item->id)}}" class="btn btn-primary">Edit</a>
                   <form class="d-inline" action="{{route('produk.destroy',$item->id)}}" method="POST" onsubmit="return confirm('yakin ingin dihapus')">
                     @csrf
@@ -42,3 +42,10 @@
   </div>
 </div>
 @endsection
+@push('js')
+<script>
+  $(function() {
+      $("#table").DataTable();
+  })
+</script>
+@endpush

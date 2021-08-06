@@ -234,7 +234,8 @@ return [
             'route'=> 'kategori.index'
         ],
         [
-            'text' => 'kelola pemesanan'
+            'text' => 'kelola pemesanan',
+            'route'=> 'transaksi.index'
         ]
     ],
 

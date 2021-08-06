@@ -11,7 +11,7 @@ class usercontroller extends Controller
 {
     public function login()
     {
-        return view('login');
+        return view('auth.login');
     }
     public function postlogin(Request $request)
     {
@@ -24,7 +24,9 @@ class usercontroller extends Controller
     {
         $user = Auth::user();
 
-        return redirect()->route('home')->with('status','selamat datang' .$user->name);
+        return redirect()->route('home')->withErrors([
+            'password'=>'email atau password salah'
+        ]);
     }
     return back()->with('status','email atau password salah');
     }
@@ -39,12 +41,12 @@ class usercontroller extends Controller
         
         else 
         {
-
+            return redirect()->route('customer.home');
         }
     }
 public function register()
 {
-    return view('register');
+    return view('auth.register');
 }
 public function postregister(Request $request)
 {
@@ -60,7 +62,9 @@ public function postregister(Request $request)
         'password'=>bcrypt($request->password),
         'role'=>'cutomer'
     ]);
-    return redirect()->route('login')->with('status','berhasil daftar');
+    return redirect()->route('login')->withErrors([
+        'password'=>'berhasil ditambahkan'
+    ]);
 }
 public function logout()
 {
